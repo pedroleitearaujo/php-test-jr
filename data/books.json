@@ -1,19 +1,7 @@
 [
     {
-        "id": "672d22536122f",
-        "title": "Botafogo.",
-        "author": "Robert C. Martin",
-        "isbn": "9780132350884"
-    },
-    {
-        "id": "672d264dbff76",
-        "title": "Botafogo.",
-        "author": "Robert C. Martin",
-        "isbn": "9780132350884"
-    },
-    {
-        "id": "672d42c444b28",
-        "title": "Botafogo.",
+        "id": "672d517c7e71e",
+        "title": "Clean Code",
         "author": "Robert C. Martin",
         "isbn": "9780132350884"
     }
