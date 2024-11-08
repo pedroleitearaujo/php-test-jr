@@ -17,6 +17,13 @@ $listUsersUseCase = new \Library\Application\UseCases\UserUseCases\ListUsersUseC
 $findUserByIdUseCase = new \Library\Application\UseCases\UserUseCases\FindUserByIdUseCase($userRepository);
 $removeUserUseCase = new \Library\Application\UseCases\UserUseCases\RemoveUserUseCase($userRepository);
 
+$loanRepository = new \Library\Persistence\JsonLoanRepository('./data/loans.json');
+$addLoanUseCase = new \Library\Application\UseCases\LoanUseCases\AddLoanUseCase($loanRepository, $bookRepository, $userRepository);
+$listLoansUseCase = new \Library\Application\UseCases\LoanUseCases\ListLoansUseCase($loanRepository);
+$findLoanByIdUseCase = new \Library\Application\UseCases\LoanUseCases\FindLoanByIdUseCase($loanRepository);
+$removeLoanUseCase = new \Library\Application\UseCases\LoanUseCases\RemoveLoanUseCase($loanRepository);
+$updateLoanUseCase = new \Library\Application\UseCases\LoanUseCases\UpdateLoanUseCase($loanRepository);
+
 // Controladores
 $bookController = new \Library\Controllers\BookController(
     $addBookUseCase,
@@ -32,6 +39,14 @@ $userController = new \Library\Controllers\UserController(
     $removeUserUseCase
 );
 
+$loanController = new \Library\Controllers\LoanController(
+    $addLoanUseCase,
+    $findLoanByIdUseCase,
+    $listLoansUseCase,
+    $removeLoanUseCase,
+    $updateLoanUseCase
+);
+
 
 // Carregar e registrar as rotas
 $bookRoutes = require __DIR__ . '/src/Routes/bookRoutes.php';
@@ -39,6 +54,9 @@ $bookRoutes($app, $bookController);
 
 $userRoutes = require __DIR__ . '/src/Routes/userRoutes.php';
 $userRoutes($app, $userController);
+
+$loanRoutes = require __DIR__ . '/src/Routes/loanRoutes.php';
+$loanRoutes($app, $loanController);
 
 // Iniciar a aplicação
 Flight::json(['error' => '$e->getMessage()'], 400);

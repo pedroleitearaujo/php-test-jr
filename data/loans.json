@@ -1,0 +1,42 @@
+[
+    {
+        "id": "672e702c9b1b1",
+        "bookId": "672d517c7e71e",
+        "userId": "672d51a1d2d8e",
+        "loanDate": "2024-01-02",
+        "dueDate": "2024-01-03",
+        "returnDate": null
+    },
+    {
+        "id": "672e7071e858c",
+        "bookId": "672d517c7e71e",
+        "userId": "672d51a1d2d8e",
+        "loanDate": "2024-01-02",
+        "dueDate": "2024-01-03",
+        "returnDate": "2025-05-01"
+    },
+    {
+        "id": "672e7071e858c",
+        "bookId": "672d517c7e71e",
+        "userId": "672d51a1d2d8e",
+        "loanDate": "2024-01-02",
+        "dueDate": "2024-01-03",
+        "returnDate": null
+    },
+    {
+        "id": "672e7071e858c",
+        "bookId": "672d517c7e71e",
+        "userId": "672d51a1d2d8e",
+        "loanDate": "2024-01-02",
+        "dueDate": "2024-01-03",
+        "returnDate": null
+    },
+    {
+        "id": "672e7071e858c",
+        "bookId": "672d517c7e71e",
+        "userId": "672d51a1d2d8e",
+        "loanDate": "2024-01-02",
+        "dueDate": "2024-01-03",
+        "returnDate": "2025-05-01"
+    }
+]
