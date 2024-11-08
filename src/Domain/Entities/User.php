@@ -4,17 +4,17 @@ namespace Library\Domain\Entities;
 
 class User extends Person
 {
-    private string $id;
+    private ? string $id;
     private string $email;
 
     public function __construct(string $name, string $email, ?string $id = null)
     {
         parent::__construct($name);
         $this->email = $email;
-        $this->id = $id ?? uniqid();
+        $this->id = $id;
     }
 
-    public function getId(): string
+    public function getId(): ? string
     {
         return $this->id;
     }
@@ -22,6 +22,11 @@ class User extends Person
     public function getEmail(): string
     {
         return $this->email;
+    }
+    
+    public function setId()
+    {
+        $this->id = uniqid();
     }
 
     public function toArray() {

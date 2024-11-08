@@ -30,7 +30,6 @@ class UserController
     {
         $name = $data['name'] ?? null;
         $email = $data['email'] ?? null;
-        $isbn = $data['isbn'] ?? null;
 
         if (!$name || !$email) {
             throw new \InvalidArgumentException("Missing required user data");

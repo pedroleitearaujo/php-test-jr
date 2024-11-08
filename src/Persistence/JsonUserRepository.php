@@ -29,11 +29,7 @@ class JsonUserRepository implements UserRepositoryInterface
     private function saveData(): void
     {
         $data = array_map(function (User $user) {
-            return [
-                'id' => $user->getId(),
-                'name' => $user->getName(),
-                'email' => $user->getEmail()
-            ];
+            return $user->toArray();
         }, $this->users);
 
         file_put_contents($this->filePath, json_encode($data, JSON_PRETTY_PRINT));
@@ -41,7 +37,10 @@ class JsonUserRepository implements UserRepositoryInterface
 
     public function save(User $user): void
     {
-        $this->users[] = $user;
+        if (is_null($user->getId())) {
+            $user->setId(); 
+        }
+        $this->users[] = $user; 
         $this->saveData();
     }
 
@@ -58,11 +57,7 @@ class JsonUserRepository implements UserRepositoryInterface
     public function findAll(): array
     {
         return array_map(function (User $user) {
-            return [
-                'id' => $user->getId(),
-                'name' => $user->getName(),
-                'email' => $user->getEmail()
-            ];
+            return $user->toArray();
         }, $this->users);
     }
 

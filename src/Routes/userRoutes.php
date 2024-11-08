@@ -16,15 +16,6 @@ return function($app, UserController $userController) {
         }
     });
 
-    $app->route('GET /users', function () use ($userController, $app) {
-        try {
-            $users = $userController->listUsers();
-            $app->json($users);
-        } catch (\Exception $e) {
-            $app->json(['error' => $e->getMessage()], 500);
-        }
-    });
-
     $app->route('GET /users/@id', function ($id) use ($userController, $app) {
         try {
             $user = $userController->findUserById($id);
@@ -33,6 +24,15 @@ return function($app, UserController $userController) {
             } else {
                 $app->json(['message' => 'User not found'], 404);
             }
+        } catch (\Exception $e) {
+            $app->json(['error' => $e->getMessage()], 500);
+        }
+    });
+
+    $app->route('GET /users', function () use ($userController, $app) {
+        try {
+            $users = $userController->listUsers();
+            $app->json($users);
         } catch (\Exception $e) {
             $app->json(['error' => $e->getMessage()], 500);
         }
