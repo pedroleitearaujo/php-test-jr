@@ -1,6 +1,7 @@
 {
     "require": {
-        "flightphp/core": "^3.13"
+        "flightphp/core": "^3.13",
+        "phpunit/phpunit": "^11.4"
     },
     "autoload": {
         "psr-4": {
