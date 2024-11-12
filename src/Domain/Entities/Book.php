@@ -49,7 +49,7 @@ class Book
             'id' => $this->getId(),
             'title' => $this->getTitle(),
             'author' => $this->getAuthor(),
-            'isbn' => $this->getIsbn()->getIsbn() // Método do ISBN para obter o valor como string
+            'isbn' => $this->getIsbn()->getIsbn() 
         ];
     }
 }

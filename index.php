@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 
 $app = new \Flight\Engine();
 
-// Dependências
+// Depedencies
 $bookRepository = new \Library\Persistence\JsonBookRepository('./data/books.json');
 $addBookUseCase = new \Library\Application\UseCases\BookUseCases\AddBookUseCase($bookRepository);
 $listBooksUseCase = new \Library\Application\UseCases\BookUseCases\ListBooksUseCase($bookRepository);
@@ -24,7 +24,7 @@ $findLoanByIdUseCase = new \Library\Application\UseCases\LoanUseCases\FindLoanBy
 $removeLoanUseCase = new \Library\Application\UseCases\LoanUseCases\RemoveLoanUseCase($loanRepository);
 $updateLoanUseCase = new \Library\Application\UseCases\LoanUseCases\UpdateLoanUseCase($loanRepository);
 
-// Controladores
+// Controllers
 $bookController = new \Library\Controllers\BookController(
     $addBookUseCase,
     $findBookByIdUseCase,
@@ -48,7 +48,7 @@ $loanController = new \Library\Controllers\LoanController(
 );
 
 
-// Carregar e registrar as rotas
+// Load Routes
 $bookRoutes = require __DIR__ . '/src/Routes/bookRoutes.php';
 $bookRoutes($app, $bookController);
 
@@ -58,6 +58,5 @@ $userRoutes($app, $userController);
 $loanRoutes = require __DIR__ . '/src/Routes/loanRoutes.php';
 $loanRoutes($app, $loanController);
 
-// Iniciar a aplicação
-Flight::json(['error' => '$e->getMessage()'], 400);
+// init
 $app->start();

@@ -3,7 +3,6 @@
 use Library\Controllers\BookController;
 
 return function ($app, BookController $bookController) {
-    // Adicionar um novo livro
     $app->route('POST /books', function () use ($bookController, $app) {
         $data = $app->request()->data->getData();
         try {
@@ -16,7 +15,6 @@ return function ($app, BookController $bookController) {
         }
     });
 
-    // Buscar um livro pelo ID
     $app->route('GET /books/@id', function ($id) use ($bookController, $app) {
         try {
             $book = $bookController->findBookById($id);
@@ -30,7 +28,6 @@ return function ($app, BookController $bookController) {
         }
     });
 
-    // Listar todos os livros
     $app->route('GET /books', function () use ($bookController, $app) {
         try {
             $books = $bookController->listBooks();
@@ -40,7 +37,6 @@ return function ($app, BookController $bookController) {
         }
     });
 
-    // Remover um livro pelo ID
     $app->route('DELETE /books/@id', function ($id) use ($bookController, $app) {
         try {
             $bookController->removeBook($id);

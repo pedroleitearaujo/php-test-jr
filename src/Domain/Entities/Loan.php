@@ -23,7 +23,6 @@ class Loan
         $this->id = $id;
     }
 
-    // Getters e Setters
     public function getId(): ? string
     {
         return $this->id;

@@ -17,7 +17,6 @@ class JsonBookRepository implements BookRepositoryInterface
         $this->loadData();
     }
 
-    // Carregar os dados do arquivo JSON
     private function loadData(): void
     {
         if (file_exists($this->filePath)) {
@@ -33,7 +32,6 @@ class JsonBookRepository implements BookRepositoryInterface
         }
     }
 
-    // Salvar os dados no arquivo JSON
     private function saveData(): void
     {
         $data = array_map(function (Book $book) {
@@ -41,21 +39,19 @@ class JsonBookRepository implements BookRepositoryInterface
                 'id' => $book->getId(),
                 'title' => $book->getTitle(),
                 'author' => $book->getAuthor(),
-                'isbn' => (string) $book->getISBN() // Convertendo ISBN para string
+                'isbn' => (string) $book->getISBN() 
             ];
         }, $this->books);
 
-        // Salvar os dados no formato de lista (sem chave como ID)
         file_put_contents($this->filePath, json_encode($data, JSON_PRETTY_PRINT));
     }
 
-    // Salvar livro no repositório
     public function save(Book $book): void
     {
         if (is_null($book->getId())) {
-            $book->setId(); // Atribuir um ID se não houver
+            $book->setId(); 
         }
-        $this->books[] = $book; // Adicionando ao array de livros
+        $this->books[] = $book;
         $this->saveData();
     }
 
