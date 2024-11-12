@@ -1,41 +1,60 @@
-# Live eCommerce - Teste para PHP
+# Live eCommerce - Library Management System
+API for library management, it can add users, books and make loans, using clean architecture and DDD (Domain Drive Design), and also has the use of unit tests.
 
-# Sistema de Gerenciamento de Biblioteca
+# Developed in 
+* PHP 8.3.13
+* COMPOSER 2.8.2
 
-## Descrição do Projeto
-Desenvolva um sistema simples de gerenciamento de biblioteca que permita adicionar, remover e listar livros, além de gerenciar empréstimos de livros.
+# Configuration
+1. Install Depedencies
+    ```bash
+    composer install
 
-## Requisitos do Projeto
-1. **Classes e Objetos:**
-   - Crie classes para representar os principais componentes do sistema: `Livro`, `Usuario`, `Emprestimo`.
-   - Cada classe deve ter atributos e métodos apropriados. Por exemplo, a classe `Livro` pode ter atributos como `titulo`, `autor`, `isbn`, e métodos como `emprestar()` e `devolver()`.
+2. Run Tests
+    ```bash
+    vendor/bin/phpunit tests
 
-2. **Encapsulamento:**
-   - Utilize encapsulamento para proteger os dados das classes. Os atributos devem ser privados e acessados através de métodos públicos (getters e setters).
+3. Start Application
+    ```bash
+    php -S localhost:8000 
 
-3. **Herança:**
-   - Implemente herança onde for apropriado. Por exemplo, você pode ter uma classe base `Pessoa` e derivar a classe `Usuario` dela.
+# Routes
+1. Books
+    * POST/books
+    * get/books/@id
+    * get/books
+    * delete/books/@id
 
-4. **Polimorfismo:**
-   - Utilize polimorfismo para permitir que diferentes tipos de usuários (por exemplo, `Aluno` e `Professor`) possam ser tratados de maneira uniforme.
+2. BooksUsers
+    * POST/users
+    * get/users/@id
+    * get/users
+    * delete/users/@id
 
-5. **DDD (Domain-Driven Design):**
-   - Estruture o projeto seguindo os princípios de DDD. Crie camadas de domínio, aplicação e infraestrutura.
-   - Defina entidades, agregados, repositórios e serviços de domínio.
-   - Utilize Value Objects para representar conceitos imutáveis, como ISBN.
+3. Loans
+    * POST/loans
+    * get/loans/@id
+    * get/loans
+    * delete/loans/@id
+    * put/loans/@id
 
-6. **Persistência:**
-   - Implemente uma camada de persistência simples usando arquivos JSON ou um banco de dados SQLite para armazenar os dados dos livros e usuários.
-
-7. **Publicação no Git:**
-   - Crie um repositório no GitHub, Bitbucket ou GitLab e faça commits regulares mostrando o progresso do desenvolvimento.
-   - Inclua um arquivo README.md com instruções sobre como configurar e executar o projeto.
-
-## Requisitos
-
-- Todo o código criado precisa conter teste unitário;
-- A padronização de sintaxe deve ser PSR-2 (https://www.php-fig.org/psr/psr-2/);
-- O código precisa estar devidamente documentado, seguindo o padrão dos arquivos atuais;
-- Todo código e documentação deve estar em inglês.
-- voce deve criar esse teste em um repositirio proprio do github e enviar o link final do projeto no email recebido pelo noso RH
-
+## Basic Usage
+To use the routes, enter the url of the api, and the desired route example:
+POST
+```bash
+http://localhost:8000/books
+```
+json:
+```bash
+{
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "isbn": "9780132350884"
+}
+```
+response:
+```bash
+{
+    "message": "Book added successfully"
+}
+```
